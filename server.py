@@ -24,5 +24,25 @@ def show_users():
     print(users)
     return render_template("read.html", all_users = users)
 
+@app.route('/edit/<int:id>')
+def edit(id):
+    data = {
+        "id": id
+    }
+    return render_template("edit.html", user=User.get_one(data))
+
+@app.route('/update', methods = ["POST"])
+def update():
+    data = {
+        'id': request.form['id'],
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email']
+    }
+    User.update(data)
+    return redirect('/read')
+
+
+
 if __name__ == '__main__':
     app.run(debug = True)

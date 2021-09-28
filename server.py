@@ -42,6 +42,12 @@ def update():
     User.update(data)
     return redirect('/read')
 
+@app.route('/show/<int:id>')
+def show(id):
+    data = {
+        'id': id,
+    }
+    return render_template("show.html", user = User.get_one(data))
 
 
 if __name__ == '__main__':

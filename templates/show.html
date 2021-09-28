@@ -16,22 +16,18 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Created At</th>
-                <th>Actions</th>
             </thead>
             <tbody>
-                {% for user in all_users %}
                 <tr>
                     <td>{{user['first_name']}}</td>
                     <td>{{user['last_name']}}</td>
                     <td>{{user['email']}}</td>
                     <td>{{user['created_at']}}</td>
-                    <td><a href="/edit/{{user.id}}">Edit</a> | <a href="/show/{{user.id}}">Show</a></td>
-                </tr>
-                {% endfor %}            
+                </tr>          
             </tbody>
         </table>
-        <form action="/">
-            <button class="btn btn-outline-primary">Add User</button>
+        <form action="/edit/{{user['id']}}">
+            <button class="btn btn-outline-primary">Edit User</button>
         </form>
     </div>
 </body>

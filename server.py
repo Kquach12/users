@@ -31,6 +31,14 @@ def edit(id):
     }
     return render_template("edit.html", user=User.get_one(data))
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    data = {
+        "id": id
+    }
+    User.delete(data)
+    return redirect('/read')
+
 @app.route('/update', methods = ["POST"])
 def update():
     data = {
